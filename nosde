@@ -1,0 +1,26 @@
+def acceso_salas(creditos):
+    if creditos == 4:
+        return "Acceso a todas las salas: Consolas, Juegos 2D, Juegos 3D, Realidad Virtual"
+    elif creditos == 3:
+        return "Acceso a Consolas, Juegos 2D, Juegos 3D"
+    elif creditos == 2:
+        return "Acceso a Consolas, Juegos 2D"
+    elif creditos == 1:
+        return "Acceso a Consolas"
+    else:
+        return "Número de créditos no válido. Por favor, pague 1, 2, 3 o 4 créditos."
+
+def main():
+    try:
+        # Solicitar al usuario que ingrese la cantidad de créditos
+        creditos = int(input("Ingrese la cantidad de créditos que desea pagar: "))
+
+        # Verificar la cantidad de créditos y mostrar acceso a las salas
+        resultado = acceso_salas(creditos)
+        print(resultado)
+
+    except ValueError:
+        print("Por favor, ingrese un número válido de créditos.")
+
+if __name__ == "__main__":
+    main()
