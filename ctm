@@ -1,0 +1,27 @@
+import time
+
+def conteo_regresivo(hora, minuto, segundo):
+    tiempo_total_segundos = hora * 3600 + minuto * 60 + segundo
+
+    while tiempo_total_segundos > 0:
+        print(f"Tiempo restante: {tiempo_total_segundos // 3600:02}:{(tiempo_total_segundos % 3600) // 60:02}:{tiempo_total_segundos % 60:02}")
+        time.sleep(1)
+        tiempo_total_segundos -= 1
+
+    print("¡Conteo regresivo finalizado!")
+
+def main():
+    try:
+        # Solicitar al usuario que ingrese la hora, minuto y segundo
+        hora = int(input("Ingrese la hora: "))
+        minuto = int(input("Ingrese el minuto: "))
+        segundo = int(input("Ingrese el segundo: "))
+
+        # Iniciar el conteo regresivo
+        conteo_regresivo(hora, minuto, segundo)
+
+    except ValueError:
+        print("Por favor, ingrese valores numéricos válidos.")
+
+if __name__ == "__main__":
+    main()
