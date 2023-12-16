@@ -1,0 +1,26 @@
+def es_multiplo_de_tres(num):
+    return num % 3 == 0
+
+def es_par(num):
+    return num % 2 == 0
+
+def main():
+    try:
+        # Solicitar al usuario que ingrese un número
+        numero = int(input("Ingrese un número: "))
+
+        # Verificar si es múltiplo de 3 y par
+        if es_multiplo_de_tres(numero) and es_par(numero):
+            print(f"{numero} es un múltiplo de 3 y también es un número par.")
+        elif es_multiplo_de_tres(numero):
+            print(f"{numero} es un múltiplo de 3, pero no es un número par.")
+        elif es_par(numero):
+            print(f"{numero} es un número par, pero no es un múltiplo de 3.")
+        else:
+            print(f"{numero} no es un múltiplo de 3 ni un número par.")
+
+    except ValueError:
+        print("Por favor, ingrese un número válido.")
+
+if __name__ == "__main__":
+    main()
