@@ -1,0 +1,17 @@
+def mostrar_triangulo_rectangulo(filas):
+    for i in range(1, filas + 1):
+        print('* ' * i)
+
+def main():
+    try:
+        # Solicitar al usuario que ingrese un número entero
+        num_entero = int(input("Ingrese un número entero para el tamaño del triángulo: "))
+
+        # Mostrar el triángulo rectángulo
+        mostrar_triangulo_rectangulo(num_entero)
+
+    except ValueError:
+        print("Por favor, ingrese un número entero válido.")
+
+if __name__ == "__main__":
+    main()
