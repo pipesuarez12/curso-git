@@ -1,0 +1,24 @@
+def es_impar(num):
+    return num % 2 != 0
+
+def es_multiplo_de_cinco(num):
+    return num % 5 == 0
+
+def main():
+    try:
+        # Solicitar al usuario que ingrese un número
+        numero = int(input("Ingrese un número: "))
+
+        # Verificar si es impar y múltiplo de 5
+        if es_impar(numero) and es_multiplo_de_cinco(numero):
+            print(f"{numero} es un número impar y múltiplo de 5.")
+        elif es_impar(numero):
+            print(f"{numero} es un número impar, pero no es múltiplo de 5.")
+        else:
+            print(f"{numero} no es un número impar.")
+
+    except ValueError:
+        print("Por favor, ingrese un número válido.")
+
+if __name__ == "__main__":
+    main()
