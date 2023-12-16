@@ -1,0 +1,26 @@
+def es_multiplo_de_siete(num):
+    return num % 7 == 0
+
+def es_par(num):
+    return num % 2 == 0
+
+def main():
+    try:
+        # Solicitar al usuario que ingrese un número
+        numero = int(input("Ingrese un número: "))
+
+        # Verificar si es múltiplo de 7 y par
+        if es_multiplo_de_siete(numero) and es_par(numero):
+            print(f"{numero} es un múltiplo de 7 y también es un número par.")
+        elif es_multiplo_de_siete(numero):
+            print(f"{numero} es un múltiplo de 7, pero no es un número par.")
+        elif es_par(numero):
+            print(f"{numero} es un número par, pero no es un múltiplo de 7.")
+        else:
+            print(f"{numero} no es un múltiplo de 7 ni un número par.")
+
+    except ValueError:
+        print("Por favor, ingrese un número válido.")
+
+if __name__ == "__main__":
+    main()
