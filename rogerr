@@ -1,0 +1,22 @@
+def es_numero_positivo_tres_cifras(numero):
+    if numero.isdigit() and len(numero) == 3 and int(numero) > 0:
+        return True
+    else:
+        return False
+
+def main():
+    try:
+        # Solicitar al usuario que ingrese un número
+        numero = input("Ingrese un número positivo de 3 cifras: ")
+
+        # Validar el número ingresado
+        if es_numero_positivo_tres_cifras(numero):
+            print(f"{numero} es un número positivo de 3 cifras.")
+        else:
+            print("Por favor, ingrese un número positivo de 3 cifras.")
+
+    except ValueError:
+        print("Por favor, ingrese un número válido.")
+
+if __name__ == "__main__":
+    main()
