@@ -1,0 +1,17 @@
+def mostrar_anios_cumplidos(edad):
+    for anio in range(1, edad + 1):
+        print(f"Ha cumplido {anio} {'año' if anio == 1 else 'años'}.")
+
+def main():
+    try:
+        # Solicitar al usuario que ingrese su edad
+        edad = int(input("Ingrese su edad: "))
+
+        # Mostrar los años cumplidos por pantalla
+        mostrar_anios_cumplidos(edad)
+
+    except ValueError:
+        print("Por favor, ingrese una edad válida.")
+
+if __name__ == "__main__":
+    main()
