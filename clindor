@@ -1,0 +1,40 @@
+import random
+
+def jugar_piedra_papel_tijera(jugador1, jugador2):
+    opciones = ["piedra", "papel", "tijera"]
+
+    # Verificar si las opciones son válidas
+    if jugador1 not in opciones or jugador2 not in opciones:
+        return "Opción no válida. Las opciones son: piedra, papel, tijera"
+
+    # Determinar el ganador
+    if jugador1 == jugador2:
+        return "Empate"
+    elif (
+        (jugador1 == "piedra" and jugador2 == "tijera") or
+        (jugador1 == "papel" and jugador2 == "piedra") or
+        (jugador1 == "tijera" and jugador2 == "papel")
+    ):
+        return f"Ganador: Jugador 1 ({jugador1}). Perdedor: Jugador 2 ({jugador2})"
+    else:
+        return f"Ganador: Jugador 2 ({jugador2}). Perdedor: Jugador 1 ({jugador1})"
+
+def main():
+    try:
+        # Solicitar al usuario que ingrese su elección
+        jugador1 = input("Jugador 1, elige piedra, papel o tijera: ").lower()
+
+        # Generar una elección aleatoria para el Jugador 2
+        jugador2 = random.choice(["piedra", "papel", "tijera"])
+
+        print(f"Jugador 2 elige: {jugador2}")
+
+        # Mostrar el resultado del juego
+        resultado = jugar_piedra_papel_tijera(jugador1, jugador2)
+        print(resultado)
+
+    except ValueError:
+        print("Por favor, ingrese una opción válida.")
+
+if __name__ == "__main__":
+    main()
