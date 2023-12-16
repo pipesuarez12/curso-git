@@ -1,0 +1,24 @@
+def es_par(num):
+    return num % 2 == 0
+
+def es_multiplo_de_seis(num):
+    return num % 6 == 0
+
+def main():
+    try:
+        # Solicitar al usuario que ingrese un número
+        numero = int(input("Ingrese un número: "))
+
+        # Verificar si es par y múltiplo de 6
+        if es_par(numero) and es_multiplo_de_seis(numero):
+            print(f"{numero} es un número par y múltiplo de 6.")
+        elif es_par(numero):
+            print(f"{numero} es un número par, pero no es múltiplo de 6.")
+        else:
+            print(f"{numero} no es un número par.")
+
+    except ValueError:
+        print("Por favor, ingrese un número válido.")
+
+if __name__ == "__main__":
+    main()
