@@ -1,0 +1,36 @@
+def mostrar_menu():
+    print("Menú del Restaurante:")
+    print("1. Carne")
+    print("2. Pescado")
+    print("3. Verdura")
+
+def elegir_bebida(opcion_menu):
+    if opcion_menu == 1:
+        return "Vino tinto"
+    elif opcion_menu == 2:
+        return "Vino blanco"
+    elif opcion_menu == 3:
+        return "Agua"
+    else:
+        return "Opción no válida"
+
+def main():
+    try:
+        # Mostrar el menú
+        mostrar_menu()
+
+        # Solicitar al usuario que elija un menú
+        opcion_menu = int(input("Elija un número del menú: "))
+
+        # Verificar la elección del menú y mostrar la bebida correspondiente
+        bebida = elegir_bebida(opcion_menu)
+        if bebida != "Opción no válida":
+            print(f"Ha elegido el menú {opcion_menu}. Se le ofrecerá: {bebida}")
+        else:
+            print("Elija carne, pescado o verdura.")
+
+    except ValueError:
+        print("Por favor, ingrese un número válido.")
+
+if __name__ == "__main__":
+    main()
