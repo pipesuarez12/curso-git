@@ -1,0 +1,27 @@
+def es_numero_entero(numero):
+    try:
+        # Intenta convertir el número a un entero
+        int_numero = int(numero)
+        
+        # Verifica si la conversión fue exitosa
+        return True
+    except ValueError:
+        # Si ocurre un ValueError, el número no es un entero
+        return False
+
+def main():
+    try:
+        # Solicitar al usuario que ingrese un número
+        numero_ingresado = input("Ingrese un número: ")
+        
+        # Verificar si es un número entero
+        if es_numero_entero(numero_ingresado):
+            print(f"{numero_ingresado} es un número entero.")
+        else:
+            print(f"{numero_ingresado} no es un número entero.")
+
+    except ValueError:
+        print("Por favor, ingrese un número válido.")
+
+if __name__ == "__main__":
+    main()
