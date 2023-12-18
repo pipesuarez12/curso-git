@@ -1,7 +1,7 @@
 # Definir información de los combos
 combos = {
-    1: {"nombre": "Combo de hamburguesas de carne al horno con jugo de coco", "precio": 10.99},
-    2: {"nombre": "Combo de pollo a la parrilla con ensalada y refresco", "precio": 12.99},
+    1: {"nombre": "combo de hamburguesa vegana", "precio": 10.99},
+    2: {"nombre": "combo de pizza ", "precio": 12.99},
     3: {"nombre": "Combo vegetariano con pasta y batido de frutas", "precio": 9.99},
 }
 
