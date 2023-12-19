@@ -28,4 +28,4 @@ def main():
     except ValueError:
         print("Por favor, ingrese una nota válida.")
 
-if __name__ == "__main__"
+"if_name"

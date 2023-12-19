@@ -1,0 +1,27 @@
+import time
+
+def cronometro(segundos):
+    for segundo_actual in range(segundos, 0, -1):
+        minutos, segundos_restantes = divmod(segundo_actual, 60)
+        print(f"Tiempo restante: {minutos:02d}:{segundos_restantes:02d}", end="\r")
+        time.sleep(1)
+
+    print("\n¡Tiempo finalizado!")
+
+if __name__ == "__main__":
+    print("¡Bienvenido al Cronómetro!")
+
+    while True:
+        try:
+            duracion = int(input("Ingrese la duración del cronómetro en segundos: "))
+            if duracion > 0:
+                cronometro(duracion)
+            else:
+                print("Error: La duración debe ser mayor que 0.")
+        except ValueError:
+            print("Error: Ingrese una duración válida (número entero).")
+
+        reiniciar = input("¿Desea iniciar otro cronómetro? (s/n): ").lower()
+        if reiniciar != 's':
+            print("¡Hasta luego!")
+            break

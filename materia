@@ -1,0 +1,39 @@
+
+
+def evaluar_nota(nota):
+    if 0.0 <= nota <= 0.9:
+        mensaje = f"Perdida la materia en {nota:.2f} sin tener recuperación."
+    elif 1.0 <= nota <= 2.5:
+        mensaje = f"Perdido la materia en {nota:.2f}, pero puedes recuperar. Si sacas 5.0 en la recuperación, tu nota final será 3.0."
+    elif 2.6 <= nota <= 2.9:
+        mensaje = f"Perdido la materia en {nota:.2f}, pero puedes recuperar. Si sacas 5.0 en la recuperación, tu nota final será 3.5."
+    elif 3.0 <= nota <= 3.5:
+        mensaje = f"Aceptable: {nota:.2f} por recuperación."
+    elif 3.6 <= nota <= 3.9:
+        mensaje = f"Aceptable: {nota:.2f}, te recomiendo que sigas mejorando, vas bien."
+    elif 4.0 <= nota <= 4.5:
+        mensaje = f"Excelente: {nota:.2f}, vas por un buen camino hacia el éxito."
+    elif 4.6 <= nota <= 5.0:
+        mensaje = f"Científico: {nota:.2f}, tienes un gran futuro adelante."
+    else:
+        mensaje = "Nota no válida. Por favor, ingrese una nota entre 0.0 y 5.0."
+
+    return mensaje
+if __name__ == "__main__":
+    print("¡Bienvenido al Sistema de Evaluación de Notas!")
+
+    while True:
+        try:
+            nota = float(input("Ingrese la nota del estudiante (0.0 - 5.0): "))
+            if 0.0 <= nota <= 5.0:
+                resultado = evaluar_nota(nota)
+                print(resultado)
+            else:
+                print("Error: La nota debe estar en el rango de 0.0 a 5.0.")
+        except ValueError:
+            print("Error: Ingrese una nota válida (número decimal).")
+
+        continuar = input("¿Desea evaluar otra nota? (s/n): ").lower()
+        if continuar != 's':
+            print("¡Hasta luego!")
+            break
