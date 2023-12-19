@@ -1,0 +1,84 @@
+class Factura:
+    def __init__(self, mesa):
+        self.mesa = mesa
+        self.items = []
+        self.total = 0.0
+
+    def agregar_item(self, item, cantidad):
+        # Aquí podrías tener un menú similar al ejemplo anterior
+        precio = obtener_precio_del_menu(item)
+        self.items.append({"item": item, "cantidad": cantidad, "precio_unitario": precio})
+        self.actualizar_total()
+
+    def actualizar_total(self):
+        self.total = sum(item["precio_unitario"] * item["cantidad"] for item in self.items)
+
+    def imprimir_factura(self):
+        print(f"\nFactura para la Mesa {self.mesa}:")
+        for item in self.items:
+            print(f"{item['item']}: {item['cantidad']} x ${item['precio_unitario']} = ${item['cantidad'] * item['precio_unitario']:.2f}")
+        print(f"Total: ${self.total:.2f}")
+
+def obtener_precio_del_menu(item):
+    # Aquí podrías tener un menú con los precios de los elementos
+    menu = {
+        "Hamburguesa": 5.0,
+        "Pizza": 8.0,
+        "Ensalada": 4.0,
+    }
+    return menu.get(item, 0.0)
+
+class Restaurante:
+    def __init__(self, num_mesas):
+        self.num_mesas = num_mesas
+        self.facturas = {}
+
+    def crear_factura(self, mesa):
+        if mesa not in self.facturas:
+            self.facturas[mesa] = Factura(mesa)
+        else:
+            print(f"Ya hay una factura creada para la Mesa {mesa}.")
+
+    def agregar_item_a_factura(self, mesa, item, cantidad):
+        if mesa in self.facturas:
+            self.facturas[mesa].agregar_item(item, cantidad)
+        else:
+            print(f"No hay una factura creada para la Mesa {mesa}. Cree una factura primero.")
+
+    def imprimir_factura(self, mesa):
+        if mesa in self.facturas:
+            self.facturas[mesa].imprimir_factura()
+        else:
+            print(f"No hay una factura creada para la Mesa {mesa}.")
+
+def main():
+    restaurante = Restaurante(num_mesas=10)
+
+    while True:
+        print("\n=== Menú Principal ===")
+        print("1. Crear Factura")
+        print("2. Agregar Ítem a Factura")
+        print("3. Imprimir Factura")
+        print("4. Salir")
+
+        opcion = input("Seleccione una opción: ")
+
+        if opcion == "1":
+            mesa = int(input("Ingrese el número de la mesa para crear la factura: "))
+            restaurante.crear_factura(mesa)
+        elif opcion == "2":
+            mesa = int(input("Ingrese el número de la mesa: "))
+            item = input("Ingrese el ítem que desea agregar: ")
+            cantidad = int(input("Ingrese la cantidad: "))
+            restaurante.agregar_item_a_factura(mesa, item, cantidad)
+        elif opcion == "3":
+            mesa = int(input("Ingrese el número de la mesa para imprimir la factura: "))
+            restaurante.imprimir_factura(mesa)
+        elif opcion == "4":
+            print("Saliendo del programa. ¡Gracias!")
+            break
+        else:
+            print("Opción no válida. Por favor, seleccione una opción válida.")
+
+if __name__ == "__main__":
+    main()
