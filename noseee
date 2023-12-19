@@ -1,0 +1,44 @@
+class Menu:
+    def __init__(self):
+        self.items = {
+            "Hamburguesa": {"precio": 5.0, "descripcion": "Deliciosa hamburguesa con queso y lechuga."},
+            "Pizza": {"precio": 8.0, "descripcion": "Pizza recién horneada con tus ingredientes favoritos."},
+            "Ensalada": {"precio": 4.0, "descripcion": "Ensalada fresca con aderezo de tu elección."},
+            # Agrega más elementos al menú según sea necesario
+        }
+
+class Factura:
+    def __init__(self):
+        self.items = []
+        self.total = 0.0
+
+    def agregar_item(self, item, cantidad, precio):
+        self.items.append({"item": item, "cantidad": cantidad, "precio_unitario": precio})
+        self.actualizar_total()
+
+    def actualizar_total(self):
+        self.total = sum(item["precio_unitario"] * item["cantidad"] for item in self.items)
+
+    def imprimir_factura(self):
+        print("\n=== Factura ===")
+        for item in self.items:
+            print(f"{item['item']}: {item['cantidad']} x ${item['precio_unitario']} = ${item['cantidad'] * item['precio_unitario']:.2f}")
+        print(f"Total: ${self.total:.2f}")
+        print("================")
+
+def obtener_precio_del_menu(item, menu):
+    return menu.items.get(item, {"precio": 0.0})["precio"]
+
+def mostrar_menu(menu):
+    print("=== Menú ===")
+    for item, detalles in menu.items.items():
+        print(f"{item}: ${detalles['precio']} - {detalles['descripcion']}")
+    print("==============")
+
+def main():
+    restaurante_menu = Menu()
+    factura_actual = None
+
+    print("¡Bienvenido al Restaurante!")
+
+    
