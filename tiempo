@@ -1,0 +1,24 @@
+from datetime import datetime
+
+def mostrar_hora_actual():
+    ahora = datetime.now()
+    hora_actual = ahora.strftime("%H:%M:%S")
+    print(f"Hora actual: {hora_actual}")
+
+if __name__ == "__main__":
+    print("¡Bienvenido al programa de muestra de hora!")
+    
+    while True:
+        print("\n=== Menú Principal ===")
+        print("1. Mostrar Hora Actual")
+        print("2. Salir")
+
+        opcion = input("Seleccione una opción: ")
+
+        if opcion == "1":
+            mostrar_hora_actual()
+        elif opcion == "2":
+            print("Saliendo del programa. ¡Gracias!")
+            break
+        else:
+            print("Opción no válida. Por favor, seleccione una opción válida.")
