@@ -1,0 +1,52 @@
+class Menu:
+    def __init__(self):
+        self.items = {
+            "Hamburguesa": {"precio": 5.0, "descripcion": "Deliciosa hamburguesa con queso y lechuga."},
+            "Pizza": {"precio": 8.0, "descripcion": "Pizza recién horneada con tus ingredientes favoritos."},
+            "Ensalada": {"precio": 4.0, "descripcion": "Ensalada fresca con aderezo de tu elección."},
+            # Agrega más elementos al menú según sea necesario
+        }
+
+class Cliente:
+    def __init__(self):
+        self.orden = []
+
+    def agregar_a_orden(self, item, cantidad):
+        self.orden.append({"item": item, "cantidad": cantidad})
+
+    def calcular_total(self, menu):
+        total = sum(menu.items[item["item"]]["precio"] * item["cantidad"] for item in self.orden)
+        return total
+
+def mostrar_menu(menu):
+    print("=== Menú ===")
+    for item, detalles in menu.items.items():
+        print(f"{item}: ${detalles['precio']} - {detalles['descripcion']}")
+
+def main():
+    menu_restaurante = Menu()
+    cliente = Cliente()
+
+    print("¡Bienvenido al Restaurante!")
+    
+    while True:
+        mostrar_menu(menu_restaurante)
+
+        item_seleccionado = input("Seleccione un ítem del menú (o escriba 'fin' para salir): ")
+
+        if item_seleccionado.lower() == "fin":
+            break
+
+        if item_seleccionado in menu_restaurante.items:
+            cantidad = int(input(f"Ingrese la cantidad de {item_seleccionado} que desea: "))
+            cliente.agregar_a_orden(item_seleccionado, cantidad)
+            print(f"{cantidad} {item_seleccionado}(s) agregado(s) a la orden.")
+        else:
+            print("Ítem no válido. Por favor, seleccione un ítem del menú.")
+
+    total_orden = cliente.calcular_total(menu_restaurante)
+    print(f"\nTotal de la orden: ${total_orden:.2f}")
+    print("¡Gracias por su pedido!")
+
+if __name__ == "__main__":
+    main()

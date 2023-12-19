@@ -1,0 +1,31 @@
+class Empleado:
+    def __init__(self, nombre, salario):
+        self.nombre = nombre
+        self.salario = salario
+
+class Nomina:
+    def __init__(self):
+        self.empleados = []
+
+    def agregar_empleado(self, empleado):
+        self.empleados.append(empleado)
+
+    def calcular_costo_total(self):
+        costo_total = sum(empleado.salario for empleado in self.empleados)
+        return costo_total
+
+def main():
+    salario_minimo = 1000  # Salario mínimo ficticio
+    empleado1 = Empleado("Empleado1", salario_minimo)
+    empleado2 = Empleado("Empleado2", 2 * salario_minimo)
+
+    nomina_empresa = Nomina()
+    nomina_empresa.agregar_empleado(empleado1)
+    nomina_empresa.agregar_empleado(empleado2)
+
+    costo_total = nomina_empresa.calcular_costo_total()
+
+    print("Costo total de la nómina para la empresa: ${}".format(costo_total))
+
+if __name__ == "__main__":
+    main()

@@ -1,0 +1,37 @@
+# Definir información de los combos
+combos = {
+    1: {"nombre": "Combo de hamburguesas de carne al horno con jugo de coco", "precio": 142.99},
+    2: {"nombre": "combo de `pizza vegetariana ", "precio": 13.99},
+    3: {"nombre": "combo de nachos", "precio": 9.99},
+}
+
+def mostrar_menu():
+    print("Menú de Combos:")
+    for numero, combo in combos.items():
+        print(f"{numero}. {combo['nombre']} - ${combo['precio']}")
+
+def mostrar_informacion_combo(numero_combo):
+    combo = combos.get(numero_combo)
+    if combo:
+        print(f"\nInformación del Combo:")
+        print(f"Nombre: {combo['nombre']}")
+        print(f"Precio: ${combo['precio']}")
+    else:
+        print("\nCombo no válido. Por favor, elige un número de combo válido.")
+
+def main():
+    try:
+        # Mostrar el menú
+        mostrar_menu()
+
+        # Solicitar al usuario que elija un combo
+        numero_combo = int(input("\nIngrese el número del combo que desea: "))
+
+        # Mostrar información del combo seleccionado
+        mostrar_informacion_combo(numero_combo)
+
+    except ValueError:
+        print("Por favor, ingrese un número válido.")
+
+if __name__ == "__main__":
+    main()

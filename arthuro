@@ -1,0 +1,32 @@
+def mensaje_nota(nota):
+    if nota >= 0.0 and nota <= 0.9:
+        return f"Perdida la materia en {nota} sin tener recuperación."
+    elif nota >= 1.0 and nota <= 2.5:
+        return f"Perdido la materia en {nota} pero se puede nivelar máximo nota final 3.0."
+    elif nota >= 2.6 and nota <= 2.9:
+        return f"Perdido la materia en {nota} pero se puede nivelar máximo nota final 3.5."
+    elif nota >= 3.0 and nota <= 3.5:
+        return f"Aceptable: {nota} por recuperación."
+    elif nota >= 3.6 and nota <= 3.9:
+        return f"Aceptable: {nota}, te recomiendo que sigas mejorando, vas bien."
+    elif nota >= 4.0 and nota <= 4.5:
+        return f"Excelente: {nota}, vas por un buen camino hacia el éxito."
+    elif nota >= 4.6 and nota <= 5.0:
+        return f"Científico: {nota}, tienes un gran futuro adelante."
+    else:
+        return "Nota no válida. Por favor, ingrese una nota entre 0.0 y 5.0."
+
+def main():
+    try:
+        # Solicitar al usuario que ingrese la nota
+        nota = float(input("Ingrese la nota (del 0.0 hasta el 5.0): "))
+
+        # Mostrar el mensaje correspondiente a la nota ingresada
+        resultado = mensaje_nota(nota)
+        print(resultado)
+
+    except ValueError:
+        print("Por favor, ingrese una nota válida.")
+
+if __name__ == "__main__":
+    main()
