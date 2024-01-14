@@ -1,0 +1,85 @@
+
+typescript
+Copy code
+// rick-and-morty.service.ts
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class RickAndMortyService {
+  private apiUrl = 'https://rickandmortyapi.com/api/';
+
+  constructor(private http: HttpClient) {}
+
+  getCharacters(): Observable<any> {
+    return this.http.get(`${this.apiUrl}character`);
+  }
+}
+Modificar el componente principal (src/app/app.component.ts):
+
+
+// app.component.ts
+import { Component, OnInit } from '@angular/core';
+import { RickAndMortyService } from './rick-and-morty.service';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent implements OnInit {
+  characters: any[];
+
+  constructor(private rickAndMortyService: RickAndMortyService) {}
+
+  ngOnInit(): void {
+    this.loadCharacters();
+  }
+
+  loadCharacters(): void {
+    this.rickAndMortyService.getCharacters().subscribe(data => {
+      this.characters = data.results;
+    });
+  }
+}
+Modificar la plantilla (src/app/app.component.html):
+
+html
+Copy code
+<!-- app.component.html -->
+<div *ngIf="characters">
+  <h2>Personajes de Rick and Morty</h2>
+  <ul>
+    <li *ngFor="let character of characters">
+      {{ character.name }}
+    </li>
+  </ul>
+</div>
+
+typescript
+Copy code
+// app.module.ts
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { RickAndMortyService } from './rick-and-morty.service';
+
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    AppRoutingModule
+  ],
+  providers: [RickAndMortyService],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+Ejecutar la aplicación:
