@@ -61,8 +61,7 @@ html
 </div>
 Asegurarse de agregar el módulo de enrutamiento en src/app/app.module.ts:
 
-typescript
-Copy code
+
 // app.module.ts
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
