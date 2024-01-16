@@ -1,6 +1,5 @@
 
-typescript
-Copy code
+
 // rick-and-morty.service.ts
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
